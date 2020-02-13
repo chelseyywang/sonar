@@ -12,11 +12,11 @@ import {
   } from 'react-native';
 
 
-    class ProfileScreen extends React.Component {
+    class BulletinScreen extends React.Component {
     render() {
         return (
         <View style={styles.container}>
-            <Text>WHAZCHAM</Text>
+            <Text>YIK YAK </Text>
         </View>
         )
     }
@@ -29,4 +29,4 @@ import {
       alignItems: 'center'
     }
   });
-  export default ProfileScreen; 
+  export default BulletinScreen; 
