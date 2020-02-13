@@ -12,17 +12,11 @@ import {
   } from 'react-native';
 
 
-    class ProfileScreen extends React.Component {
+    class MapScreen extends React.Component {
     render() {
         return (
         <View style={styles.container}>
-            <Text>WHAZCHAM</Text>
-            <TouchableOpacity 
-            style={styles.loginButton}
-            onPress={() => this.props.navigation.navigate('Home')}
-            >
-              <Text style={styles.loginText}>Log In</Text>
-            </TouchableOpacity>
+            <Text>MAPS</Text>
         </View>
         )
     }
@@ -35,4 +29,4 @@ import {
       alignItems: 'center'
     }
   });
-  export default ProfileScreen; 
+  export default MapScreen; 

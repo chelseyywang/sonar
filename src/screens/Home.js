@@ -33,7 +33,7 @@ import {
             <MilanInputField labelText=' Password ' password={true}/>
             <TouchableOpacity 
             style={styles.loginButton}
-            onPress={() => this.props.navigation.navigate('Bulletin')}
+            onPress={() => this.props.navigation.navigate('Events')}
             >
               <Text style={styles.loginText}>Log In</Text>
             </TouchableOpacity>
@@ -43,12 +43,12 @@ import {
               {" "}
             </Text>
             
-            {/* <TouchableOpacity ><Text
+            <TouchableOpacity ><Text
               style={styles.signup}
-              onPress={() => this.props.navigation.navigate('Signup')}
+              onPress={() => this.props.navigation.navigate('Bulletin')}
             >
               Sign up
-            </Text></TouchableOpacity> */}
+            </Text></TouchableOpacity>
            </View> 
 
              

@@ -2,88 +2,90 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation'; 
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Platform } from 'react-native'; 
+import { createSwitchNavigator } from 'react-navigation'; 
 import EventsScreen from '../screens/Events'; 
 import ProfileScreen from '../screens/Profile'; 
 import HomeScreen from '../screens/Home';
 import BulletinScreen from '../screens/Bulletin'; 
-import { color } from 'react-native-reanimated';
+import MapScreen from '../screens/Map'; 
+
+// making header not visible 
+const config = { headerMode: 'none'};  
 
 
-const config = { headerMode: 'screen'};  
+// switch navigator DOESN'T allow swiping backwards --
+// perfect functionality for a login screen
+// HomeScreen holds the login screen atm 
 
-const HomeStack = createStackNavigator(
+const LeftStack = createSwitchNavigator(
     {
       Home: HomeScreen,
-      Bulletin: BulletinScreen, 
-    },
+      Events: EventsScreen, 
+    }, // i guess this is some type of data structure
     config
   );
 
-HomeStack.navigationOptions = {
-    // tabBarVisible: false, 
-    headerVisible: false, 
-}
+  // uses indexing into above data structure to control which screen has visible bottom tab bar
+  LeftStack.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true;
+    if (navigation.state.index == 0) {
+      tabBarVisible = false;
+    }
+    return {
+      tabBarVisible,
+    };
+  };
 
-HomeStack.path = ''; 
+// don't know what this does but i copy pasted it in 
+LeftStack.path = ''; 
 
-const ProfileStack = createStackNavigator(
+// defining profile stack for bottom tab bar 
+// bulletin stack is an example of a screen NOT found on bottom tab bar
+// still need to be able to navigate to it though, so me and party app friend
+//      figured out that including it in the stack navigators lets us navigate to it
+const MiddleStack = createStackNavigator(
     {
+        Map: MapScreen, 
         Profile: ProfileScreen,
         Bulletin: BulletinScreen, 
+       // HomeStack
     },
     config
 )
 
-ProfileStack.navigationOptions = {
-    header: {
-        visible: false,
-      }
-}; 
+// ProfileStack.navigationOptions = {
+//     header: {
+//         visible: false,
+//       }
+// }; 
 
-ProfileStack.path = ''; 
+MiddleStack.path = ''; 
 
-const EventsStack = createStackNavigator(
+// events tab
+const RightStack = createStackNavigator(
     {
-        Events: EventsScreen, 
+        // Events: EventsScreen, 
         Bulletin: BulletinScreen, 
     },
     config
 );
 
-EventsStack.navigationOptions = {
-    header: {
-        visible: false,
-      }
+RightStack.navigationOptions = {
+    tabBarVisible: true, 
 }
 
-EventsStack.path = ''; 
+RightStack.path = ''; 
 
+// actual bottom tab bar -- these are the three tabs 
 const tabNavigator = createBottomTabNavigator(
     {
-        HomeStack, 
-        ProfileStack, 
-        EventsStack, 
+        LeftStack, 
+        MiddleStack, 
+        RightStack, 
     },
-    // config, 
-    {
-        headerMode: 'float', 
-        navigationOptions: {
-            header: null, 
-        }
-    }
 );
-
-
-tabNavigator.navigationOptions = {
-    header: {
-        visible: false,
-      }
-    
-}; 
-
-
 
 tabNavigator.path = ''; 
 
+// export tab navigator! 
 export default createAppContainer(tabNavigator); 
