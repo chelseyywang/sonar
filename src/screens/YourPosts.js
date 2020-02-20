@@ -13,15 +13,20 @@ import {
 import { withNavigation } from 'react-navigation'; 
 import { DrawerActions } from 'react-navigation-drawer'; 
 import { Drawer } from 'react-native-paper';
-
 import DrawerButton from '../components/DrawerButton'; 
 
-    class MapScreen extends React.Component {
+    class YourPostsScreen extends React.Component {
     render() {
         return (
         <View style={styles.container}>
-          <DrawerButton/> 
-            <Text style={{fontSize: 50}}>MAPS</Text>
+            <DrawerButton/>
+            <Text style={{fontSize: 50}}>UR POSTS</Text>
+            <TouchableOpacity 
+            // style={styles.loginButton}
+            onPress={() => this.props.navigation.navigate('MapDrawer')}
+            >
+              <Text>Back to Map</Text>
+            </TouchableOpacity>
         </View>
         )
     }
@@ -34,4 +39,4 @@ import DrawerButton from '../components/DrawerButton';
       alignItems: 'center'
     }
   });
-  export default MapScreen; 
+  export default YourPostsScreen; 

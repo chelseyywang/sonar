@@ -3,11 +3,14 @@ import {createAppContainer} from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createSwitchNavigator } from 'react-navigation'; 
+import { createDrawerNavigator } from 'react-navigation-drawer'; 
 import EventsScreen from '../screens/Events'; 
 import ProfileScreen from '../screens/Profile'; 
 import HomeScreen from '../screens/Home';
 import BulletinScreen from '../screens/Bulletin'; 
 import MapScreen from '../screens/Map'; 
+import drawerContent from '../components/drawerContent'; 
+import YourPostsScreen from '../screens/YourPosts';
 
 // making header not visible 
 const config = { headerMode: 'none'};  
@@ -17,13 +20,43 @@ const config = { headerMode: 'none'};
 // perfect functionality for a login screen
 // HomeScreen holds the login screen atm 
 
+
+const DrawerNavigator = createDrawerNavigator(
+  {
+    EventDrawer: EventsScreen, 
+    Map: MapScreen, 
+  },
+  {
+    contentComponent: drawerContent, 
+  }
+); 
+
+
+
+const MiddleDrawerNavigator = createDrawerNavigator(
+  {
+    MapDrawer: MapScreen,
+    YourPosts: YourPostsScreen, 
+    Events: EventsScreen, 
+  },
+  {
+    contentComponent: drawerContent, 
+    // drawerPosition: "right",
+    initialRouteName: "MapDrawer" 
+  }
+); 
+ 
 const LeftStack = createSwitchNavigator(
     {
       Home: HomeScreen,
-      Events: EventsScreen, 
+      // Events: EventsScreen, 
+      Events: DrawerNavigator,
     }, // i guess this is some type of data structure
     config
+    
   );
+
+
 
   // uses indexing into above data structure to control which screen has visible bottom tab bar
   LeftStack.navigationOptions = ({ navigation }) => {
@@ -45,6 +78,8 @@ LeftStack.path = '';
 //      figured out that including it in the stack navigators lets us navigate to it
 const MiddleStack = createStackNavigator(
     {
+        // Map: MapScreen, 
+        MiddleDrawerNavigator, 
         Map: MapScreen, 
         Profile: ProfileScreen,
         Bulletin: BulletinScreen, 

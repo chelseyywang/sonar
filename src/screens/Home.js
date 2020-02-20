@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {
     SafeAreaView,
     StyleSheet,
@@ -15,7 +14,6 @@ import {
   } from 'react-native';
 
   import MilanInputField from '../components/MilanInputField';
-  import BottomBar from '../components/BottomBar'; 
 
     class HomeScreen extends React.Component {
     render() {
