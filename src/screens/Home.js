@@ -10,6 +10,8 @@ import {
     TouchableOpacity, 
     ImageBackground, 
     KeyboardAvoidingView, 
+    Image, 
+    Dimensions
 
   } from 'react-native';
 
@@ -20,13 +22,17 @@ import {
         return (
             <View style={styles.container}>
             <ImageBackground source={require('../pics/water-blue-ocean-5412.jpg')} style={{width: '100%', height: '100%'}}>
-            <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
+            <KeyboardAvoidingView style={styles.avoidView} 
+            // behavior="padding"
+            >
       {/* <StatusBar barStyle="dark-content" /> */}
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
+            
             <Text style={styles.sectionTitle}>SONAR.</Text>
+            <View style={{paddingHorizontal: 30}}>
             <MilanInputField labelText=' Username ' />
             <MilanInputField labelText=' Password ' password={true}/>
             <TouchableOpacity 
@@ -48,7 +54,7 @@ import {
               Sign up
             </Text></TouchableOpacity>
            </View> 
-
+            </View>
              
         </ScrollView>
       </SafeAreaView>
@@ -63,8 +69,8 @@ import {
     const styles = StyleSheet.create({
         
         avoidView: {
-          paddingLeft: 30,
-          paddingRight: 30,
+          // paddingLeft: 30,
+          // paddingRight: 30,
           paddingTop: 250,
           flex:1, 
          },

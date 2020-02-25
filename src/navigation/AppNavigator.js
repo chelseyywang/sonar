@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Image} from 'react';
 import {createAppContainer} from 'react-navigation'; 
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -11,6 +11,8 @@ import BulletinScreen from '../screens/Bulletin';
 import MapScreen from '../screens/Map'; 
 import drawerContent from '../components/drawerContent'; 
 import YourPostsScreen from '../screens/YourPosts';
+// import { Icon } from 'react-native-paper/lib/typescript/src/components/List/List';
+// import { createRequire } from 'module';
 
 // making header not visible 
 const config = { headerMode: 'none'};  
@@ -107,6 +109,20 @@ const RightStack = createStackNavigator(
 
 RightStack.navigationOptions = {
     tabBarVisible: true, 
+    // tabBarIcon: ({ focused, horizontal, tintColor }) => {
+    //   return <Image
+    //           source={require('../icons/sound.png')}
+    //           // style={{ height: 25, width: 25, tintColor: tintColor }}
+    //       />;
+  // },
+    // tabBarIcon: {
+    //   ({ tintColor }) => (
+    //     <Image source={require('../icons/sound.svg')}
+    //     // style= {{width:15, height:15, tintColor:'black'}}
+    //     />
+    // )
+    // }
+    
 }
 
 RightStack.path = ''; 
@@ -118,6 +134,13 @@ const tabNavigator = createBottomTabNavigator(
         MiddleStack, 
         RightStack, 
     },
+    {
+      tabBarOptions: {
+        style: {
+          backgroundColor: "#121640", 
+        }
+      }
+    }
 );
 
 tabNavigator.path = ''; 

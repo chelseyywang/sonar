@@ -21,15 +21,15 @@ class drawerContent extends Component {
 
     return (
       <View style={styles.wrapper}>
-          <TouchableOpacity style={{borderWidth: 1, width: 150, }} onPress={()=>{this.props.navigation.dispatch(DrawerActions.closeDrawer())}}>
-              <Text> CLOSE DRAWER </Text>
+          <TouchableOpacity style={{borderWidth: 1, width: 150, borderColor: "white", marginVertical: 10}} onPress={()=>{this.props.navigation.dispatch(DrawerActions.closeDrawer())}}>
+              <Text style={[styles.text, {fontSize: 16}]}> CLOSE DRAWER </Text>
             </TouchableOpacity>
-          <Text>Milan M. </Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Profile')}><Text style={styles.name}>Milan M. </Text></TouchableOpacity>
           <TouchableOpacity 
             // style={styles.loginButton}
             onPress={() => this.props.navigation.navigate('YourPosts')}
             >
-              <Text>YourPosts</Text>
+              <Text style={styles.text}>Your Posts</Text>
             </TouchableOpacity>
             
       </View>
@@ -40,6 +40,19 @@ const styles = StyleSheet.create({
   wrapper: {
       paddingTop: 100, 
       paddingLeft: 20, 
+      height: "100%", 
+      backgroundColor: "#121640", 
+  }, 
+  name: {
+    color: "white", 
+    fontSize: 24, 
+    fontWeight: "bold", 
+    padding: 10
+  },
+  text: {
+    color: "white", 
+    fontSize: 18,
+    padding: 10
   }
 });
 export default drawerContent;

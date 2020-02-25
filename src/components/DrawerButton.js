@@ -7,7 +7,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { white } from "ansi-colors";
 
 
-class drawerButton extends Component {
+class DrawerButton extends Component {
   render() {
     const 
     { 
@@ -20,11 +20,11 @@ class drawerButton extends Component {
     } = this.props;
 
     return (
-      <View style={styles.wrapper}>
-          <TouchableOpacity style={{borderWidth: 1}} onPress={()=>{this.props.navigation.dispatch(DrawerActions.openDrawer())}}>
-              <Text> BUTTON </Text>
+      // <View style={styles.wrapper}>
+          <TouchableOpacity style={[styles.wrapper, {borderWidth: 1, borderColor: "#121640", backgroundColor: "white"}]} onPress={()=>{this.props.navigation.dispatch(DrawerActions.openDrawer())}}>
+              <Text style={{color: "#121640"}}> BUTTON </Text>
             </TouchableOpacity>
-      </View>
+      // </View>
     );
   }
 }
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
       left: 30, 
   }
 });
-export default withNavigation(drawerButton);
+export default withNavigation(DrawerButton);

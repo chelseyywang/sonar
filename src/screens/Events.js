@@ -16,7 +16,7 @@ import {
     render() {
         return (
         <View style={styles.container}>
-            <Text>EVENTS</Text>
+            <Text style={{color: "white"}}>EVENTS</Text>
         </View>
         )
     }
@@ -26,7 +26,9 @@ import {
     container: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: "#121640", 
+
     }
   });
   export default EventsScreen; 

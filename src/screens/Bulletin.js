@@ -8,7 +8,9 @@ import {
     Text,
     StatusBar,
     Button, 
-    TouchableOpacity
+    TouchableOpacity, 
+    Image, 
+    Dimensions
   } from 'react-native';
 
 
@@ -16,7 +18,11 @@ import {
     render() {
         return (
         <View style={styles.container}>
-            <Text>YIK YAK </Text>
+            
+            <Text style={{color: "#EC58BD", fontWeight: "bold", fontSize: 50}}>YIK YAK </Text>
+            <Image source={require('../icons/resizeLogo.png')} style={{width: Dimensions.get('window').width,
+}}/>
+        {/* <Image source={require('../icons/sound.svg')}/> */}
         </View>
         )
     }
@@ -26,7 +32,9 @@ import {
     container: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center', 
+      backgroundColor: "#121640", 
+
     }
   });
   export default BulletinScreen; 

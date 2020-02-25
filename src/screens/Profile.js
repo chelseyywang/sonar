@@ -16,7 +16,7 @@ import {
     render() {
         return (
         <View style={styles.container}>
-            <Text>WHAZCHAM</Text>
+            <Text style={{color: "white"}}>WHAZCHAM</Text>
             <TouchableOpacity 
             style={styles.loginButton}
             onPress={() => this.props.navigation.navigate('Home')}
@@ -32,7 +32,9 @@ import {
     container: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center', 
+      backgroundColor: "#121640", 
+
     }
   });
   export default ProfileScreen; 
